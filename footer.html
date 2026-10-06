@@ -1,0 +1,151 @@
+<footer class="gov-footer">
+
+    <style>
+        .gov-footer {
+            --footer-navy: #102a43;
+            --footer-green: #087f5b;
+
+            font-family: Tahoma, Arial, sans-serif;
+            direction: rtl;
+            margin-top: 30px;
+            background: #ffffff;
+            border-top: 1px solid #e6edf2;
+            color: #627d98;
+        }
+
+        .gov-footer * {
+            box-sizing: border-box;
+        }
+
+        .gov-footer-inner {
+            max-width: 1600px;
+            min-height: 68px;
+            padding: 14px 28px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .gov-footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gov-footer-mark {
+            width: 32px;
+            height: 32px;
+            border-radius: 9px;
+            background: #e9f7f2;
+            color: var(--footer-green);
+            display: grid;
+            place-items: center;
+            font-weight: 900;
+        }
+
+        .gov-footer-title {
+            color: var(--footer-navy);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .gov-footer-subtitle {
+            margin-top: 3px;
+            font-size: 9px;
+        }
+
+        .gov-footer-info {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+            font-size: 10px;
+        }
+
+        .gov-footer-status {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #38755f;
+            font-weight: 700;
+        }
+
+        .gov-footer-status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #16a36f;
+            box-shadow:
+                0 0 0 4px rgba(22,163,111,.11);
+        }
+
+        @media (max-width: 700px) {
+            .gov-footer-inner {
+                padding: 15px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .gov-footer-info {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+    </style>
+
+    <div class="gov-footer-inner">
+
+        <div class="gov-footer-brand">
+
+            <div class="gov-footer-mark">
+                ح
+            </div>
+
+            <div>
+                <div class="gov-footer-title">
+                    منصة حوكمة المعاملات
+                </div>
+
+                <div class="gov-footer-subtitle">
+                    منظومة إدارة ومتابعة المعاملات القانونية
+                </div>
+            </div>
+        </div>
+
+        <div class="gov-footer-info">
+
+            <span>
+                جميع الحقوق محفوظة ©
+                <span id="govFooterYear"></span>
+            </span>
+
+            <span>
+                الإصدار 1.0.0
+            </span>
+
+            <div class="gov-footer-status">
+                <span class="gov-footer-status-dot"></span>
+                النظام يعمل بصورة طبيعية
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+
+            const year =
+                document.getElementById('govFooterYear');
+
+            if (year) {
+                year.textContent =
+                    new Date().getFullYear();
+            }
+
+        })();
+    </script>
+
+</footer>

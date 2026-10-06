@@ -1,0 +1,505 @@
+<header class="gov-header">
+    <style>
+        .gov-header {
+            --header-navy: #102a43;
+            --header-navy-light: #173f5f;
+            --header-green: #087f5b;
+            --header-gold: #c8a45d;
+            --header-muted: #829ab1;
+
+            font-family: Tahoma, Arial, sans-serif;
+            direction: rtl;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(16,42,67,.98),
+                    rgba(18,57,83,.98)
+                );
+            color: #fff;
+            box-shadow: 0 4px 24px rgba(15, 39, 64, .12);
+        }
+
+        .gov-header * {
+            box-sizing: border-box;
+        }
+
+        .gov-header-inner {
+            min-height: 76px;
+            max-width: 1600px;
+            margin: auto;
+            padding: 10px 28px;
+            display: grid;
+            grid-template-columns: auto minmax(260px, 1fr) auto;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .gov-brand {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            min-width: 260px;
+        }
+
+        .gov-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 15px;
+            display: grid;
+            place-items: center;
+            flex: 0 0 auto;
+            background:
+                linear-gradient(
+                    145deg,
+                    #16a085,
+                    #087f5b
+                );
+            box-shadow:
+                inset 0 0 0 1px rgba(255,255,255,.15),
+                0 7px 20px rgba(0,0,0,.15);
+        }
+
+        .gov-logo svg {
+            width: 27px;
+            height: 27px;
+            stroke: #fff;
+        }
+
+        .gov-brand-text {
+            line-height: 1.25;
+        }
+
+        .gov-brand-name {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -.2px;
+        }
+
+        .gov-brand-subtitle {
+            margin-top: 5px;
+            color: #cbdbe7;
+            font-size: 11px;
+        }
+
+        .gov-header-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .gov-top-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 12px;
+            min-height: 40px;
+            border: 1px solid rgba(255,255,255,.11);
+            background: rgba(255,255,255,.07);
+            border-radius: 11px;
+            color: #eef6fb;
+            font-size: 12px;
+            white-space: nowrap;
+            backdrop-filter: blur(6px);
+        }
+
+        .gov-top-item svg {
+            width: 17px;
+            height: 17px;
+            stroke: #8ee3c3;
+        }
+
+        .gov-top-label {
+            color: #a9becd;
+            font-size: 10px;
+            margin-left: 3px;
+        }
+
+        .gov-header-actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 9px;
+        }
+
+        .gov-header-button {
+            border: 1px solid rgba(255,255,255,.12);
+            color: white;
+            background: rgba(255,255,255,.06);
+            width: 41px;
+            height: 41px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            transition: .2s ease;
+            position: relative;
+        }
+
+        .gov-header-button:hover {
+            background: rgba(255,255,255,.12);
+            transform: translateY(-1px);
+        }
+
+        .gov-header-button svg {
+            width: 19px;
+            height: 19px;
+            stroke: #fff;
+        }
+
+        .gov-notification-count {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            min-width: 18px;
+            height: 18px;
+            padding: 0 4px;
+            border-radius: 20px;
+            background: #e55353;
+            color: #fff;
+            font-size: 9px;
+            display: grid;
+            place-items: center;
+            border: 2px solid var(--header-navy);
+        }
+
+        .gov-user {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin-right: 3px;
+            padding-right: 10px;
+            border-right: 1px solid rgba(255,255,255,.13);
+        }
+
+        .gov-user-avatar {
+            width: 39px;
+            height: 39px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: #f4f7f9;
+            color: var(--header-navy);
+            font-weight: 800;
+            font-size: 13px;
+        }
+
+        .gov-user-name {
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .gov-user-role {
+            margin-top: 3px;
+            color: #a9becd;
+            font-size: 9px;
+        }
+
+        .gov-header-line {
+            height: 3px;
+            background:
+                linear-gradient(
+                    90deg,
+                    #087f5b,
+                    #1abc9c 45%,
+                    #c8a45d 100%
+                );
+        }
+
+        @media (max-width: 1100px) {
+            .gov-header-inner {
+                grid-template-columns: 1fr auto;
+            }
+
+            .gov-header-center {
+                grid-column: 1 / -1;
+                grid-row: 2;
+                padding-bottom: 3px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .gov-header-inner {
+                padding: 10px 14px;
+            }
+
+            .gov-brand-subtitle,
+            .gov-user-text {
+                display: none;
+            }
+
+            .gov-brand {
+                min-width: auto;
+            }
+
+            .gov-brand-name {
+                font-size: 15px;
+            }
+
+            .gov-top-item {
+                font-size: 10px;
+                padding: 7px 9px;
+            }
+        }
+    </style>
+
+    <div class="gov-header-inner">
+
+        <div class="gov-brand">
+            <div class="gov-logo">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 20h16"/>
+                    <path d="M6 20V9"/>
+                    <path d="M18 20V9"/>
+                    <path d="M3 9h18L12 3 3 9Z"/>
+                    <path d="M9 13h6"/>
+                    <path d="M9 16h6"/>
+                </svg>
+            </div>
+
+            <div class="gov-brand-text">
+                <div class="gov-brand-name">
+                    حوكمة المعاملات
+                </div>
+
+                <div class="gov-brand-subtitle">
+                    منظومة متابعة وحوكمة سير المعاملات القانونية
+                </div>
+            </div>
+        </div>
+
+        <div class="gov-header-center">
+
+            <div class="gov-top-item">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M8 2v4M16 2v4"/>
+                    <rect x="3" y="5" width="18" height="16" rx="2"/>
+                    <path d="M3 10h18"/>
+                </svg>
+
+                <div>
+                    <span class="gov-top-label">التاريخ</span>
+                    <strong id="govCurrentDate">--</strong>
+                </div>
+            </div>
+
+            <div class="gov-top-item">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M12 7v5l3 2"/>
+                </svg>
+
+                <strong id="govCurrentTime">--:--</strong>
+            </div>
+
+            <div class="gov-top-item">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M3 12h18"/>
+                    <path d="M5 7h14"/>
+                    <path d="M8 17h8"/>
+                </svg>
+
+                <div>
+                    <span class="gov-top-label">الموقع</span>
+                    <strong>الرياض</strong>
+                </div>
+            </div>
+
+            <div class="gov-top-item">
+                <span id="govWeatherIcon">☀️</span>
+
+                <div>
+                    <span class="gov-top-label">الطقس</span>
+                    <strong id="govWeather">جاري التحديث...</strong>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="gov-header-actions">
+
+            <button
+                class="gov-header-button"
+                type="button"
+                title="التنبيهات"
+            >
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+                    <path d="M10 21h4"/>
+                </svg>
+
+                <span class="gov-notification-count">7</span>
+            </button>
+
+            <button
+                class="gov-header-button"
+                type="button"
+                title="الإعدادات"
+            >
+                <svg viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.6v-.1A1.7 1.7 0 0 0 9 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H3V9.6h.1A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.34-1.88l-.06-.06 2.83-2.83.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V3h4v.1A1.7 1.7 0 0 0 15 4.6a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.83 2.83-.06.06A1.7 1.7 0 0 0 19.4 9c.4.3.8.5 1.2.6h.4v4h-.1a1.7 1.7 0 0 0-1.5 1.4Z"/>
+                </svg>
+            </button>
+
+            <div class="gov-user">
+
+                <div class="gov-user-avatar">
+                    م
+                </div>
+
+                <div class="gov-user-text">
+                    <div class="gov-user-name">
+                        مدير النظام
+                    </div>
+
+                    <div class="gov-user-role">
+                        الإدارة القانونية
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="gov-header-line"></div>
+
+    <script>
+        (function () {
+
+            function updateGovernmentDateTime() {
+
+                const now = new Date();
+
+                const dateElement =
+                    document.getElementById('govCurrentDate');
+
+                const timeElement =
+                    document.getElementById('govCurrentTime');
+
+                if (dateElement) {
+
+                    dateElement.textContent =
+                        new Intl.DateTimeFormat(
+                            'ar-SA',
+                            {
+                                weekday: 'long',
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric'
+                            }
+                        ).format(now);
+                }
+
+                if (timeElement) {
+
+                    timeElement.textContent =
+                        new Intl.DateTimeFormat(
+                            'ar-SA',
+                            {
+                                hour: '2-digit',
+                                minute: '2-digit',
+                                second: '2-digit'
+                            }
+                        ).format(now);
+                }
+            }
+
+            function getWeatherDescription(code) {
+
+                const descriptions = {
+                    0: ['صحو', '☀️'],
+                    1: ['غالباً صحو', '🌤️'],
+                    2: ['غائم جزئياً', '⛅'],
+                    3: ['غائم', '☁️'],
+                    45: ['ضباب', '🌫️'],
+                    48: ['ضباب', '🌫️'],
+                    51: ['رذاذ خفيف', '🌦️'],
+                    53: ['رذاذ', '🌦️'],
+                    55: ['رذاذ كثيف', '🌧️'],
+                    61: ['أمطار خفيفة', '🌧️'],
+                    63: ['أمطار', '🌧️'],
+                    65: ['أمطار غزيرة', '🌧️'],
+                    80: ['زخات مطر', '🌦️'],
+                    95: ['عواصف رعدية', '⛈️']
+                };
+
+                return descriptions[code] || ['معتدل', '🌤️'];
+            }
+
+            async function loadRiyadhWeather() {
+
+                const weatherElement =
+                    document.getElementById('govWeather');
+
+                const iconElement =
+                    document.getElementById('govWeatherIcon');
+
+                if (!weatherElement) return;
+
+                try {
+
+                    const url =
+                        'https://api.open-meteo.com/v1/forecast' +
+                        '?latitude=24.7136' +
+                        '&longitude=46.6753' +
+                        '&current=temperature_2m,weather_code' +
+                        '&timezone=Asia%2FRiyadh';
+
+                    const response = await fetch(url);
+
+                    if (!response.ok) {
+                        throw new Error('Weather request failed');
+                    }
+
+                    const data = await response.json();
+
+                    const temperature =
+                        Math.round(data.current.temperature_2m);
+
+                    const weatherInfo =
+                        getWeatherDescription(
+                            data.current.weather_code
+                        );
+
+                    weatherElement.textContent =
+                        temperature + '° - ' + weatherInfo[0];
+
+                    if (iconElement) {
+                        iconElement.textContent =
+                            weatherInfo[1];
+                    }
+
+                } catch (error) {
+
+                    weatherElement.textContent =
+                        'الرياض';
+
+                    if (iconElement) {
+                        iconElement.textContent = '🌤️';
+                    }
+                }
+            }
+
+            updateGovernmentDateTime();
+
+            setInterval(
+                updateGovernmentDateTime,
+                1000
+            );
+
+            loadRiyadhWeather();
+
+            setInterval(
+                loadRiyadhWeather,
+                900000
+            );
+
+        })();
+    </script>
+</header>
